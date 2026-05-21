@@ -8,8 +8,9 @@ import { containerVariants, itemVariants } from "./animations";
 import { useState } from "react";
 
 export function ShadowExperience() {
-  if (!ShadowTemplate.features[FeaturesEnum.WORK_EXPERIENCE_SECTION]) return null;
   const [selectedExp, setSelectedExp] = useState<number | null>(null);
+
+  if (!ShadowTemplate.features[FeaturesEnum.WORK_EXPERIENCE_SECTION]) return null;
 
   const openModal = (index: number) => {
     setSelectedExp(index);
