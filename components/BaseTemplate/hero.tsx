@@ -1,112 +1,98 @@
+
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Sparkles } from "lucide-react";
 import { BaseTemplate } from "../../config/app-data/templates/base";
 import { UserSocialsData } from "../../config/user-data/socials";
-import { AppSettingData } from "../../config/app-data/appSetting";
-
-const socialLabels: Record<string, string> = {
-  github: "GitHub",
-  email: "邮箱",
-};
 
 export const HeroSection = () => {
   return (
-    <header className="mb-20 md:mb-28">
-      <nav className="mb-12 flex items-center justify-between">
+    <header className="container mx-auto px-4 py-8">
+      <nav className="flex gap-3 items-center mb-16">
         <Link
           href="/"
-          className="text-sm font-medium tracking-wide text-amber-400/90 transition hover:text-amber-300"
+          className="text-base hover:text-zinc-400 underline decoration-wavy decoration-1"
         >
-          {AppSettingData.appName}
+          Home
         </Link>
-        <div className="flex items-center gap-6 text-sm text-zinc-400">
-          <Link
-            href="/"
-            className="transition hover:text-zinc-100"
-          >
-            首页
-          </Link>
-          <Link
-            href="#projects"
-            className="transition hover:text-zinc-100"
-          >
-            项目
-          </Link>
-        </div>
+        <Link
+          href="/resume"
+          className="text-base hover:text-zinc-400 flex items-center gap-1 group"
+        >
+          <span className="underline group-hover:decoration-wavy decoration-1">
+            View resume
+          </span>
+          <span className="transition-transform duration-200 transform group-hover:rotate-90">
+            ↗
+          </span>
+        </Link>
       </nav>
 
-      <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-        <div className="order-2 min-w-0 flex-1 md:order-1">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
-            Portfolio
-          </p>
-          <h1 className="mb-5 bg-gradient-to-r from-zinc-50 via-zinc-100 to-zinc-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
-            {BaseTemplate.fullName}
-          </h1>
-
-          <div className="mb-6 flex flex-wrap gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-700/80 bg-zinc-900/80 px-3 py-1 text-sm text-zinc-300">
-              <MapPin className="h-3.5 w-3.5 text-amber-400/80" />
-              {BaseTemplate.location}
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-700/80 bg-zinc-900/80 px-3 py-1 text-sm text-zinc-300">
-              <Sparkles className="h-3.5 w-3.5 text-cyan-400/80" />
-              {BaseTemplate.tagline}
-            </span>
-          </div>
-
-          <p className="mb-8 max-w-2xl text-base leading-relaxed text-zinc-400 whitespace-pre-line md:text-lg">
-            {BaseTemplate.miniBio}
-          </p>
-
-          {BaseTemplate.features.SOCIALS_SECTION && (
-            <div className="flex flex-wrap gap-3">
-              {Object.entries(UserSocialsData).map(
-                ([name, { icon: Icon, url }]) => {
-                  const href = url.startsWith("mailto:")
-                    ? url
-                    : url.includes("@")
-                      ? `mailto:${url.replace(/^mailto:/, "")}`
-                      : url;
-
-                  return (
-                    <Link
-                      key={name}
-                      href={href}
-                      className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-900/60 px-4 py-2 text-sm text-zinc-300 transition hover:border-amber-500/40 hover:bg-zinc-800 hover:text-zinc-100"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon className="h-4 w-4 text-amber-400/90" />
-                      {socialLabels[name] ?? name}
-                    </Link>
-                  );
-                }
-              )}
+      <div className="flex justify-between items-start">
+        <div>
+          <div className="flex justify-between gap-4 mb-5">
+            <div>
+              <h1 className="text-2xl font-medium mb-4">
+                {BaseTemplate.fullName}
+              </h1>
+              <div className="space-y-2 mb-6">
+                <p className="text-base text-zinc-300 flex items-center gap-2">
+                  <span>📍</span> {BaseTemplate.location}
+                </p>
+                <p className="text-base text-zinc-300 flex items-center gap-2">
+                  <span>💻</span> {BaseTemplate.tagline}
+                </p>
+              </div>
             </div>
-          )}
-        </div>
 
-        <div className="order-1 flex shrink-0 justify-center md:order-2 md:justify-end">
-          <div className="relative">
-            <div
-              className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-amber-500/40 to-cyan-500/20 blur-md"
-              aria-hidden
-            />
             <Image
               src={
                 BaseTemplate.heroImage.type === "url"
                   ? BaseTemplate.heroImage.url
                   : `/images/${BaseTemplate.heroImage.url}`
               }
-              width={160}
-              height={160}
-              alt="头像"
-              className="relative h-36 w-36 rounded-2xl border-2 border-zinc-700/80 object-cover shadow-2xl transition duration-300 hover:scale-[1.02] sm:h-40 sm:w-40"
-              priority
+              width={100}
+              height={100}
+              alt="Profile picture"
+              className="w-28 h-28 rounded-sm object-cover transform -rotate-12 shadow-lg border-2 border-white hover:rotate-0 transition-transform duration-300 max-sm:hidden"
             />
           </div>
+
+          <p className="text-base text-zinc-300 leading-relaxed mb-8 break-words whitespace-pre-line">
+            {BaseTemplate.miniBio}
+          </p>
+
+          {/* social links start */}
+          {BaseTemplate.features.SOCIALS_SECTION && (
+            <div className="flex items-center gap-4 flex-wrap">
+              {Object.entries(UserSocialsData).map(
+                ([name, { icon: Icon, url }]) => {
+                  let mailtoUrl = null;
+                  if (url.includes("@")) {
+                    mailtoUrl = `mailto:${url}`;
+                  }
+
+                  return (
+                    <Link
+                      key={url}
+                      href={mailtoUrl || url}
+                      className="text-zinc-300 hover:text-zinc-100 flex items-center gap-1 group"
+                      target="_blank"
+                    >
+                      <Icon className="h-4 w-4" />
+                      <span className="text-base underline group-hover:decoration-wavy">
+                        {name}
+                      </span>
+                      <span className="transition-transform duration-200 transform group-hover:rotate-90">
+                        ↗
+                      </span>
+                    </Link>
+                  );
+                }
+              )}
+            </div>
+          )}
+
+          {/* social links end */}
         </div>
       </div>
     </header>
