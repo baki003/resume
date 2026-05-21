@@ -82,7 +82,9 @@ export function ShadowHero() {
           variants={containerVariants}
           className="text-lg leading-relaxed space-y-6 font-mono lg:-mt-45"
         >
-          <motion.p variants={itemVariants}>{UserInfoData.miniBio}</motion.p>
+          <motion.p variants={itemVariants} className="whitespace-pre-line">
+            {UserInfoData.miniBio}
+          </motion.p>
         </motion.div>
       </div>
     </main>

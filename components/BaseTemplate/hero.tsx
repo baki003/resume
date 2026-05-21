@@ -57,7 +57,7 @@ export const HeroSection = () => {
             />
           </div>
 
-          <p className="text-base text-zinc-300 leading-relaxed mb-8  break-words">
+          <p className="text-base text-zinc-300 leading-relaxed mb-8 break-words whitespace-pre-line">
             {BaseTemplate.miniBio}
           </p>
 

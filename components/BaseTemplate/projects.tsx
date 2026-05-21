@@ -32,7 +32,7 @@ export const ProjectsSection = () => {
                   {project.title}
                 </Link>
               </h3>
-              <p className="text-zinc-400">{project.role}</p>
+              <p className="text-zinc-400 whitespace-pre-line">{project.role}</p>
               <p className="text-zinc-300 leading-relaxed whitespace-pre-line">
                 {project.description}
               </p>
