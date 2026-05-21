@@ -68,7 +68,7 @@ export function ShadowProjects() {
               <h3 className="text-black text-xl font-semibold mb-2">
                 {project.title}
               </h3>
-              <p className="text-black/80 mb-4">{project.description}</p>
+              <p className="text-black/80 mb-4 whitespace-pre-line">{project.description}</p>
             </div>
           ))}
         </motion.div>
