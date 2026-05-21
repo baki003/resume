@@ -1,9 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { UserSkillsData } from "@/config/user-data/skills";
+import { ShadowTemplate, FeaturesEnum } from "@/config/app-data/templates/shadow";
 import { containerVariants, itemVariants } from "./animations";
 
 export function ShadowSkills() {
+  if (!ShadowTemplate.features[FeaturesEnum.SKILLS_SECTION]) return null;
   return (
     <section id="skills" className="max-w-[1000px] mx-auto py-24">
       <motion.div

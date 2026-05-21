@@ -2,10 +2,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { UserWorkExperienceData } from "@/config/user-data/workExperience";
 import type { IWorkExperience } from "@/config/user-data/workExperience";
+import { ShadowTemplate } from "@/config/app-data/templates/shadow";
+import { FeaturesEnum } from "@/config/app-data/templates/shadow";
 import { containerVariants, itemVariants } from "./animations";
 import { useState } from "react";
 
 export function ShadowExperience() {
+  if (!ShadowTemplate.features[FeaturesEnum.WORK_EXPERIENCE_SECTION]) return null;
   const [selectedExp, setSelectedExp] = useState<number | null>(null);
 
   const openModal = (index: number) => {

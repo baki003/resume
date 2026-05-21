@@ -33,8 +33,8 @@ export const ShadowTemplate: ShadowTemplate = {
   miniBio: UserInfoData.miniBio,
   features: {
     [FeaturesEnum.SOCIALS_SECTION]: true,
-    [FeaturesEnum.SKILLS_SECTION]: true,
+    [FeaturesEnum.SKILLS_SECTION]: false,
     [FeaturesEnum.PROJECTS_SECTION]: true,
-    [FeaturesEnum.WORK_EXPERIENCE_SECTION]: true,
+    [FeaturesEnum.WORK_EXPERIENCE_SECTION]: false,
   },
 };

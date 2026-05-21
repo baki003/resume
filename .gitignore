@@ -44,5 +44,5 @@ pnpm-lock.yaml
 # git
 .git
 
-# data
-/config/user-data
+# 个人配置需提交到 Git，Vercel 才能正确构建（勿提交 .env）
+# /config/user-data

@@ -18,7 +18,7 @@ export function ShadowProjects() {
           variants={itemVariants}
           className="text-black text-4xl font-bold mb-12"
         >
-          Notable Projects
+          项目
         </motion.h2>
 
         <motion.div
