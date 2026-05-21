@@ -4,5 +4,5 @@ export const AppSettingData = {
   appName: "我的作品集",
   copyrightDate: new Date().getFullYear(),
   template: AVAILABLE_TEMPLATES.BASE,
-  githubUrl: "https://github.com/你的用户名",
+  githubUrl: "https://github.com/baki003/resume",
 }
