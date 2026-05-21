@@ -4,7 +4,7 @@ export const UserInfoData = {
   location: "中国",
   miniBio: "我只想让自己获得幸福，仅此而已，我要靠现实中属于自己的力量来获得幸福",
   heroImage: {
-    type: "url",
+    type: "url" as const,
     url: "/images/asuka.png",
   },
 }

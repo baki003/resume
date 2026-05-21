@@ -23,10 +23,7 @@ export interface ShadowTemplate {
 }
 
 export const ShadowTemplate: ShadowTemplate = {
-  heroImage: {
-    type: "file",
-    url: "profile.png", // Update with your image
-  },
+  heroImage: UserInfoData.heroImage,
   fullName: UserInfoData.fullName,
   location: UserInfoData.location,
   tagline: UserInfoData.tagLine,
